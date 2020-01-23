@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Results from '../Results';
 import './coordinates.css';
 
 const GetCoordinates = () => {
@@ -58,13 +59,7 @@ const GetCoordinates = () => {
         onClick={onGetVertices}>
           {isFetching ? 'Getting vertices...' : 'Get Vertices'}
       </button>
-      {coordinates.length > 0 &&
-        <pre className="getcoordinates_results_success">
-          <code className="getcoordinates_results_code">
-            {coordinates}
-          </code>
-        </pre>
-      }
+      <Results results={coordinates} />
     </div>
    );
 }

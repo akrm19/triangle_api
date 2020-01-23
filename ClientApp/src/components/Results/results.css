@@ -1,0 +1,29 @@
+.getcoordinates_input_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.getcoordinates_results {
+    text-align: center;
+    min-height: 5em;
+    margin-bottom: 2em;
+}
+
+.getcoordinates_button {
+    width: 40%;
+    align-self: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.getcoordinates_results_success {
+    color:#0c5460;
+    background-color:#d1ecf1;
+    border-color:#bee5eb;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    padding-left: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 5em;
+}
