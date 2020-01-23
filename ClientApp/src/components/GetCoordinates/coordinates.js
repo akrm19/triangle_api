@@ -16,7 +16,6 @@ const GetCoordinates = () => {
       });
       const data = await resp.json();
 
-      console.log(data);
       setCoordinates(JSON.stringify(data, null, 2));
       setIsFetching(false);
     };
