@@ -1,9 +1,9 @@
 ﻿using System;
 namespace TriangleApi.Models
 {
-    public class TriangleCoordinate
+    public class TriangleVertices
     {
-        public TriangleCoordinate()
+        public TriangleVertices()
         {
         }
     }

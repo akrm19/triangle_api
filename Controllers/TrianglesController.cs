@@ -2,31 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TriangleApi.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TriangleApi.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
     public class TrianglesController : Controller
     {
         // GET: api/values
         [HttpGet]
-        public ActionResult<string> Get([FromQuery]TriangleCoordinate coordinate)
+        public IEnumerable<string> Get()
         {
-            try
-            {
-                var temp = $"coodinate: col:{coordinate.Column}, row:{coordinate.Row}";
-                return Ok(temp);
-            }
-            catch(Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Unexpected error occured: {e.Message}");
-            }
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET api/values/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/values
+        [HttpPost]
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
