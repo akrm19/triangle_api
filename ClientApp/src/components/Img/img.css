@@ -1,0 +1,11 @@
+.img_container {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: initial;
+    align-items: flex-end;
+}
+
+.img_image_instance {
+    max-width: 35em;
+    height: auto;
+}
