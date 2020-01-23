@@ -2,45 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TriangleApi.Models;
+using TriangleApi.Utils;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TriangleApi.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
-    public class TrianglesController : Controller
+    public class TrianglesController : ControllerBase
     {
-        // GET: api/values
+        private TriangleHelper _helper;
+
+        public TrianglesController()
+        {
+            _helper = new TriangleHelper();
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<TriangleVertices> Get([FromQuery]TriangleCoordinate coordinate)
         {
-            return new string[] { "value1", "value2" };
-        }
+            try
+            {
+                var result = _helper.GetVerticesForCoordinate(coordinate);
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+                if (result == null)
+                    return BadRequest("No triangle found with given coordinate");
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                return Ok(result);
+            }
+            catch(Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Unexpected error occured: {e.Message}");
+            }
         }
     }
 }
