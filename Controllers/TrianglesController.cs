@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using TriangleApi.Models;
 using TriangleApi.Utils;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace TriangleApi.Controllers
 {
     [ApiController]
@@ -19,8 +17,8 @@ namespace TriangleApi.Controllers
             _helper = new TriangleHelper();
         }
 
-        [HttpGet]
-        public ActionResult<TriangleVertices> Get([FromQuery]TriangleCoordinate coordinate)
+        [HttpGet("{row}/{column}")]
+        public ActionResult<TriangleVertices> GetVertices([FromRoute]TriangleCoordinate coordinate)
         {
             try
             {
@@ -31,19 +29,22 @@ namespace TriangleApi.Controllers
 
                 return Ok(result);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Unexpected error occured: {e.Message}");
             }
         }
 
-        //api/triangles/Coordinate
-        [HttpGet("Coordinate")]
+        //api/triangles/Coordinates
+        [HttpGet("Coordinates")]
         public ActionResult<TriangleCoordinate> GetCoordinate2([FromQuery]TriangleVertices vertices)
         {
             try
             {
                 var result = _helper.GetCoordinateFromVertices(vertices);
+
+                if (result == null)
+                    return BadRequest("Invalid vertices. Unable to find traingle coordinate");
 
                 return Ok(result);
             }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using TriangleApi.Models;
 
 namespace TriangleApi.Utils
@@ -52,7 +54,8 @@ namespace TriangleApi.Utils
 
         public TriangleCoordinate GetCoordinateFromVertices(TriangleVertices vertices)
         {
-            //TODO: Add validation
+            if (!AreValidVertices(vertices))
+                return null;
 
             var isTop = vertices.TopLeftY == vertices.MiddleY;
 
@@ -71,6 +74,13 @@ namespace TriangleApi.Utils
         private char NumToChar(int position)
         {
             return (char)(65 + (position - 1));
+        }
+
+        private bool AreValidVertices(TriangleVertices vrtx)
+        {
+            var vertices = new List<int> { vrtx.TopLeftX, vrtx.TopLeftY, vrtx.MiddleX, vrtx.MiddleY, vrtx.BottomRightX, vrtx.BottomRightY };
+
+            return !vertices.Any(v => v < 0 || v > _imgSize || v % _sqrSize != 0);
         }
     }
 }
