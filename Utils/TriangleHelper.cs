@@ -50,9 +50,27 @@ namespace TriangleApi.Utils
                 midX, midY);
         }
 
+        public TriangleCoordinate GetCoordinateFromVertices(TriangleVertices vertices)
+        {
+            //TODO: Add validation
+
+            var isTop = vertices.TopLeftY == vertices.MiddleY;
+
+            int col = ((vertices.MiddleX / 10) * 2) + (isTop ? 0 : 1);
+            int rowNum = (_imgSize - vertices.BottomRightY) / _sqrSize;
+            char row = NumToChar(rowNum);
+
+            return new TriangleCoordinate(row, col);
+        }
+
         private int CharToNum(char c)
         {
             return char.ToUpper(c) - 64;
+        }
+
+        private char NumToChar(int position)
+        {
+            return (char)(65 + (position - 1));
         }
     }
 }

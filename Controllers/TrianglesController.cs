@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TriangleApi.Models;
@@ -13,7 +10,7 @@ namespace TriangleApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TrianglesController : ControllerBase
+    public class TrianglesController : Controller
     {
         private TriangleHelper _helper;
 
@@ -35,6 +32,22 @@ namespace TriangleApi.Controllers
                 return Ok(result);
             }
             catch(Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Unexpected error occured: {e.Message}");
+            }
+        }
+
+        //api/triangles/Coordinate
+        [HttpGet("Coordinate")]
+        public ActionResult<TriangleCoordinate> GetCoordinate2([FromQuery]TriangleVertices vertices)
+        {
+            try
+            {
+                var result = _helper.GetCoordinateFromVertices(vertices);
+
+                return Ok(result);
+            }
+            catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Unexpected error occured: {e.Message}");
             }

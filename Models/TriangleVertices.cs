@@ -29,6 +29,8 @@ namespace TriangleApi.Models
         [Range(0, 100)]
         public int MiddleY { get; set; }
 
+        public TriangleVertices() { }
+
         public TriangleVertices(int tlX, int tlY, int brX, int brY, int midX, int midY)
         {
             TopLeftX = tlX;
