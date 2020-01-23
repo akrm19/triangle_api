@@ -1,0 +1,35 @@
+.getcoordinates_parent_container {
+    margin-top: 4em;
+    display: flex;
+    flex-direction: column;
+}
+
+.getcoordinates_title_text {
+    /* width: 100%; */
+    text-align: center;
+    margin-bottom: .5em;
+}
+
+.getcoordinates_summary_text {
+    margin: 1em;
+    text-align: center;
+}
+
+.getcoordinates_input_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.getcoordinates_results {
+    /* margin-top: 2em; */
+    text-align: center;
+    min-height: 5em;
+    margin-bottom: 2em;
+}
+
+.getcoordinates_button {
+    width: 40%;
+    align-self: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
