@@ -53,5 +53,20 @@ namespace TriangleApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Unexpected error occured: {e.Message}");
             }
         }
+
+
+                //api/triangles/Coordinates
+        [HttpGet("test")]
+        public ActionResult<TriangleCoordinate> GetTest([FromQuery]TriangleVertices vertices)
+        {
+            try
+            {
+                return Ok("OK Test");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Unexpected error occured: {e.Message}");
+            }
+        }
     }
 }
