@@ -78,9 +78,11 @@ namespace TriangleApi.Services
 
         private bool AreValidVertices(TriangleVertices vrtx)
         {
+            if (vrtx == null) return false;
+
             var vertices = new List<int> { vrtx.TopLeftX, vrtx.TopLeftY, vrtx.MiddleX, vrtx.MiddleY, vrtx.BottomRightX, vrtx.BottomRightY };
 
-            return !vertices.Any(v => v < 0 || v > _imgSize || v % _sqrSize != 0);
+            return vertices.Capacity == 6 && !vertices.Any(v => v < 0 || v > _imgSize || v % _sqrSize != 0);
         }
     }
 }
