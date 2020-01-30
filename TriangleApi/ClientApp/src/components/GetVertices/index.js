@@ -40,7 +40,7 @@ const GetVertices = () => {
       <div className={`bd-callout bd-callout-info getcoordinates_summary_text`} >
         Enter the vertices to get the corresponding triangle coordinate:
       </div>
-      <div className="input-group ">
+      <div className="input-group getvertices_inputgroup_sizing">
         <div className="input-group-prepend">
           <span className="input-group-text">Top Left X and Top Left Y</span>
         </div>
@@ -53,7 +53,7 @@ const GetVertices = () => {
           onChange={e => setTopLeftY(e.target.value)}
           value={topLeftY} />
       </div>
-      <div className="input-group ">
+      <div className="input-group getvertices_inputgroup_sizing">
         <div className="input-group-prepend">
           <span className="input-group-text">Bottom Right X and Bottom Right Y</span>
         </div>
@@ -66,7 +66,7 @@ const GetVertices = () => {
           onChange={e => setbottomRightY(e.target.value)}
           value={bottomRightY} />
       </div>
-      <div className="input-group ">
+      <div className="input-group getvertices_inputgroup_sizing">
         <div className="input-group-prepend">
           <span className="input-group-text">Middle X and Middle Y</span>
         </div>

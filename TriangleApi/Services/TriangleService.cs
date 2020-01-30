@@ -83,7 +83,10 @@ namespace TriangleApi.Services
 
             var vertices = new List<int> { vrtx.TopLeftX, vrtx.TopLeftY, vrtx.MiddleX, vrtx.MiddleY, vrtx.BottomRightX, vrtx.BottomRightY };
 
-            return vertices.Capacity == 6 && !vertices.Any(v => v < 0 || v > _imgSize || v % _sqrSize != 0);
+            if (vertices.Count != 6)
+                return false;
+
+            return !vertices.Any(v => v < 0 || v > _imgSize || v % _sqrSize != 0);
         }
     }
 }
