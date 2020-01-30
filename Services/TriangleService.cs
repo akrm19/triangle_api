@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using TriangleApi.Models;
-using TriangleApi.Services;
 
-namespace TriangleApi.Utils
+namespace TriangleApi.Services
 {
-    public class TriangleHelper : ITriangeService
+    public class TriangleService : ITriangeService
     {
         private int _imgSize, _sqrSize;
 
-        public TriangleHelper(int imageSize = 60, int squareSize = 10)
+        public TriangleService(int imageSize = 60, int squareSize = 10)
         {
             _imgSize = imageSize;
             _sqrSize = squareSize;
@@ -18,7 +17,7 @@ namespace TriangleApi.Utils
 
         private int ColumnCount()
         {
-            return _imgSize / (_sqrSize/2);
+            return _imgSize / (_sqrSize / 2);
         }
 
         private int RowCount()
@@ -48,7 +47,7 @@ namespace TriangleApi.Utils
             var midY = isTop ? topLeftY : bottomRightY;
 
             return new TriangleVertices(
-                topLeftX,topLeftY,
+                topLeftX, topLeftY,
                 bottomRightX, bottomRightY,
                 midX, midY);
         }
