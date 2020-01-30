@@ -26,6 +26,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Utils\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using TriangleApi.Models;
+using TriangleApi.Services;
 
 namespace TriangleApi.Utils
 {
-    public class TriangleHelper
+    public class TriangleHelper : ITriangeService
     {
         private int _imgSize, _sqrSize;
 

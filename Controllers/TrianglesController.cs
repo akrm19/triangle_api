@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TriangleApi.Models;
-using TriangleApi.Utils;
+using TriangleApi.Services;
 
 namespace TriangleApi.Controllers
 {
@@ -10,11 +10,12 @@ namespace TriangleApi.Controllers
     [Route("api/[controller]")]
     public class TrianglesController : Controller
     {
-        private TriangleHelper _helper;
+        private ITriangeService _helper;
 
-        public TrianglesController()
+        public TrianglesController(ITriangeService triangeService)
         {
-            _helper = new TriangleHelper();
+            _helper = triangeService;
+
         }
 
         [HttpGet("{row}/{column}")]
