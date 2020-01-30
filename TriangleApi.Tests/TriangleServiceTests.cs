@@ -22,5 +22,15 @@ namespace TriangleApi.Tests
             var input = new TriangleVertices(-2, -2, -2, -2, -2, -2);
             var result = service.GetCoordinateFromVertices(input);
             Assert.Null(result);
+        }        [Fact]        public void IsResultValid_VerticesFromCoordinates_InvalidInput()
+        {
+            var service = new TriangleService();
+            var input = new TriangleCoordinate('z', 2);
+            var result = service.GetVerticesForCoordinate(input);
+            Assert.Null(result);
+
+            input = new TriangleCoordinate('a', -2);
+            result = service.GetVerticesForCoordinate(input);
+            Assert.Null(result);
         }    }
 }

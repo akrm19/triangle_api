@@ -28,7 +28,8 @@ namespace TriangleApi.Services
         public TriangleVertices GetVerticesForCoordinate(TriangleCoordinate coordinate)
         {
             //Check if coordinate is valid:
-            if (CharToNum(coordinate.Row) > RowCount() || coordinate.Column > ColumnCount())
+            if (coordinate == null || CharToNum(coordinate.Row) > RowCount() || coordinate.Column > ColumnCount()
+                || coordinate.Column < 0)
                 return null;
 
             //Odds are at the bottom of the sqr
